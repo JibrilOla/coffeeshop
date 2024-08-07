@@ -1,0 +1,250 @@
+{%extends 'csapp/base.html'%} {%block content%}{%load static%}
+
+<!-- Menu Start -->
+<div class="container-fluid pt-5">
+  <div class="container">
+    <div class="section-title">
+      <h4 class="text-primary text-uppercase" style="letter-spacing: 5px">
+        Menu & Pricing
+      </h4>
+      <h1 class="display-4">Let's take your order</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <h1 class="mb-5">Hot Coffee</h1>
+        <div class="row align-items-center mb-5">
+          <div class="col-4 col-sm-3">
+            <img
+              class="w-100 rounded-circle mb-3 mb-sm-0"
+              src="{%static 'img/Hot-Black-Coffee.jpg' %}"
+              alt=""
+            />
+            <h5 class="menu-price" style="font-size: 15px">N500</h5>
+          </div>
+          <div class="col-8 col-sm-9">
+            <h4>Black Coffee</h4>
+            <p class="m-0">Hot, Bold, Rich and Satisfying</p>
+            <div id="cart1">
+              <button
+                class="btn btn-primary font-weight-bold px-3"
+                onclick="addToCart('/order/Hot-Black-Coffee/500')"
+                data-url="/order/Hot-Black-Coffee/500"
+                id="liveToastBtn"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5">
+          <div class="col-4 col-sm-3">
+            <img
+              class="w-100 rounded-circle mb-3 mb-sm-0"
+              src="{%static 'img/Hot-Chocolate-Coffee.jpg' %}"
+              alt=""
+            />
+            <h5 class="menu-price" style="font-size: 15px">N750</h5>
+          </div>
+          <div class="col-8 col-sm-9">
+            <h4>Chocolate Coffee</h4>
+            <p class="m-0">
+              Indulge in the decadent combination of rich chocolate and smooth
+              coffee
+            </p>
+            <div id="cart2">
+              <button
+                class="btn btn-primary font-weight-bold px-3"
+                onclick="addToCart('/order/Hot-Chocolate-Coffee/750')"
+                data-url="/order/Hot-Chocolate-Coffee/750"
+                id="liveToastBtn"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5">
+          <div class="col-4 col-sm-3">
+            <img
+              class="w-100 rounded-circle mb-3 mb-sm-0"
+              src="{%static 'img/Hot-Coffee-with-Milk.jpg' %}"
+              alt=""
+            />
+            <h5 class="menu-price" style="font-size: 15px">N1500</h5>
+          </div>
+          <div class="col-8 col-sm-9">
+            <h4>Coffee With Milk</h4>
+            <p class="m-0">
+              The perfect balance of bold coffee and creamy milk. This
+              harmonious duo creates a smooth and satisfying sip that's sure to
+              brighten up your day!
+            </p>
+            <div id="cart3">
+              <button
+                class="btn btn-primary font-weight-bold px-3"
+                onclick="addToCart('/order/Hot-Coffee-with-Milk/1500')"
+                data-url="/order/Hot-Coffee-with-Milk/1500"
+                id="liveToastBtn"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <h1 class="mb-5">Cold Coffee</h1>
+        <div class="row align-items-center mb-5">
+          <div class="col-4 col-sm-3">
+            <img
+              class="w-100 rounded-circle mb-3 mb-sm-0"
+              src="{%static 'img/Hot-Black-Coffee.jpg' %}"
+              alt=""
+            />
+            <h5 class="menu-price" style="font-size: 15px">N500</h5>
+          </div>
+          <div class="col-8 col-sm-9">
+            <h4>Black Coffee</h4>
+            <p class="m-0">
+              Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et
+              lorem dolor
+            </p>
+            <div id="cart4">
+              <button
+                class="btn btn-primary font-weight-bold px-3"
+                onclick="addToCart('/order/Cold-Black-Coffee/500')"
+                data-url="/order/Cold-Black-Coffee/500"
+                id="liveToastBtn"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5">
+          <div class="col-4 col-sm-3">
+            <img
+              class="w-100 rounded-circle mb-3 mb-sm-0"
+              src="{%static 'img/Hot-Chocolate-Coffee.jpg' %}"
+              alt=""
+            />
+            <h5 class="menu-price" style="font-size: 15px">N700</h5>
+          </div>
+          <div class="col-8 col-sm-9">
+            <h4>Chocolate Coffee</h4>
+            <p class="m-0">
+              Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et
+              lorem dolor
+            </p>
+            <div id="cart5">
+              <button
+                class="btn btn-primary font-weight-bold px-3"
+                onclick="addToCart('/order/Cold-Chocolate-Coffee/700')"
+                data-url="/order/Cold-Chocolate-Coffee/700"
+                id="liveToastBtn"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5">
+          <div class="col-4 col-sm-3">
+            <img
+              class="w-100 rounded-circle mb-3 mb-sm-0"
+              src="{%static 'img/Hot-Coffee-with-Milk.jpg' %}"
+              alt=""
+            />
+            <h5 class="menu-price" style="font-size: 15px">N1300</h5>
+          </div>
+          <div class="col-8 col-sm-9">
+            <h4>Coffee With Milk</h4>
+            <p class="m-0">
+              Sit lorem ipsum et diam elitr est dolor sed duo guberg sea et et
+              lorem dolor
+            </p>
+            <div id="cart6">
+              <button
+                class="btn btn-primary font-weight-bold px-3"
+                onclick="addToCart('/order/Cold-Coffee-with-Milk/1300/')"
+                data-url="/order/Cold-Coffee-with-Milk/1300/"
+                id="liveToastBtn"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="toast-container position-fixed bottom-0 end-0 p-3"
+  style="z-index: 1"
+>
+  <div
+    id="liveToast"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <img
+        width="28"
+        height="28"
+        src="https://img.icons8.com/external-basicons-line-edtgraphics/50/da9f5b/external-Shopping-cart-shopping-carts-and-baskets-basicons-line-edtgraphics-8.png"
+        class="rounded me-2"
+        alt="..."
+      />
+      <strong class="me-auto">Message</strong>
+      <small>Just now</small>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body" style="font-weight: 600">
+      Added to cart successfully
+    </div>
+  </div>
+</div>
+
+<script>
+  function addToCart(url) {
+    // Make an AJAX request
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+      },
+    }).then((response) => response.json());
+  }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toastTriggers = document.querySelectorAll(".btn-primary");
+    const toastLiveExample = document.getElementById("liveToast");
+
+    if (toastTriggers.length > 0 && toastLiveExample) {
+      toastTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          toastLiveExample.classList.add("show");
+
+          // Set a timeout to hide the toast after 3000 milliseconds (3 seconds)
+          setTimeout(() => {
+            toastLiveExample.classList.remove("show");
+          }, 2000);
+        });
+      });
+    }
+  });
+</script>
+<!-- Menu End -->
+
+{%endblock%}

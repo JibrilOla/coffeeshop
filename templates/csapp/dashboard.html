@@ -1,0 +1,293 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User</title>
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <link href="{%static 'css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% url 'colors' %}" />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+    @import url("https://fonts.googleapis.com/css2?family=Dhurjati&display=swap");
+
+    body {
+      background: #fffbf2;
+    }
+    .header {
+      background-color: #703914;
+      color: #ffffff;
+    }
+    .balance {
+      font-family: "Pacifico", cursive;
+      font-size: 40px;
+      color: rgb(255, 255, 255);
+    }
+    .usr {
+      font-family: "Pacifico", cursive;
+    }
+    .px {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5%;
+    }
+    .rec {
+      margin-right: 5%;
+      width: 30%;
+    }
+    button {
+      width: 100%;
+    }
+    .hr {
+      height: 3px;
+      background-color: #da9f5b;
+    }
+    .hr2 {
+      margin-left: 2.5%;
+      height: 2px;
+      background-color: #da9f5b;
+      width: 95%;
+    }
+    .list {
+      font-weight: 500;
+      font-size: 25px;
+      color: black;
+      display: flex;
+      align-items: center;
+      height: 50px;
+      width: 50%;
+    }
+    .list-content {
+      display: flex;
+      align-items: center;
+      height: 50px;
+      padding: 3%;
+    }
+    .p {
+      padding-top: 3%;
+      padding-left: 10%;
+      width: fit-content;
+    }
+    .logout {
+      font-size: 30px;
+      font-family: "Dhurjati", sans-serif;
+      color: #c17b2c;
+      text-align: center;
+    }
+    .cart-icon {
+      display: block;
+      position: fixed;
+      top: 70%;
+      right: 2%;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background-color: rgb(74, 10, 10);
+      z-index: 1;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+    @media (min-width: 451px) and (max-width: 700px) {
+      body {
+        background: #fffbf2;
+      }
+      .balance {
+        font-family: "Pacifico", cursive;
+        font-size: 25px;
+        color: rgb(255, 255, 255);
+      }
+      .list {
+        font-weight: 500;
+        font-size: 20px;
+        width: 70%;
+      }
+      .usr {
+        font-family: "Pacifico", cursive;
+      }
+      .px {
+        display: flex;
+        align-items: center;
+        padding: 2%;
+        justify-content: space-between;
+      }
+    }
+    @media (max-width: 450px) {
+      .balance {
+        font-size: 20px;
+      }
+      .px {
+        display: flex;
+        align-items: center;
+        padding: 2%;
+        justify-content: space-between;
+      }
+      .rec {
+        margin-right: 0%;
+      }
+      .px2 {
+        display: flex;
+        flex-direction: column;
+      }
+      .p {
+        padding-top: 5%;
+        padding-left: 10%;
+        width: fit-content;
+      }
+      .list {
+        font-weight: 500;
+        font-size: 20px;
+        color: black;
+        display: flex;
+        align-items: center;
+        height: 50px;
+        width: 70%;
+      }
+      .cart-icon {
+        display: block;
+        position: fixed;
+        top: 70%;
+        right: 2%;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: rgb(74, 10, 10);
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+    }
+  </style>
+  <body>
+    <a href="/cart">
+      <div class="cart-icon">
+        <img
+          width="34"
+          height="34"
+          src="https://img.icons8.com/sf-black/64/da9f5b/shopping-cart.png"
+          alt="shopping-cart"
+        />
+      </div>
+    </a>
+    <section class="header">
+      <a href="/home">
+        <img
+          style="position: absolute; top: 2%; left: 1%"
+          width="30"
+          height="30"
+          src="https://img.icons8.com/ios-glyphs/30/da9f5b/home.png"
+          alt="home"
+        />
+      </a>
+      <p
+        class="usr"
+        style="
+          display: flex;
+          justify-content: end;
+          align-items: center;
+          width: 95%;
+          padding-top: 4%;
+        "
+      >
+        <img
+          class="m-1"
+          width="25"
+          height="25"
+          src="https://img.icons8.com/ios-filled/50/da9f5b/user-male-circle.png"
+          alt="user-male-circle"
+        />
+        {{request.user}}
+      </p>
+      <div class="px">
+        <div class="px2">
+          <p class="balance">
+            Points Balance:
+            <img
+              width="34"
+              height="34"
+              src="https://img.icons8.com/glyph-neue/64/da9f5b/rating-circled.png"
+              alt="rating-circled"
+            />{{balance}}
+          </p>
+        </div>
+        <a class="rec" href="/initiate-payment"
+          ><button
+            type="submit"
+            class="btn btn-primary"
+            style="border-radius: 10px"
+          >
+            Top-Up
+          </button></a
+        >
+      </div>
+    </section>
+    <p class="hr"></p>
+    <a href="/orders" class="list-content" style="text-decoration: none">
+      <div class="list">
+        <img
+          width="34"
+          height="34"
+          src="https://img.icons8.com/glyph-neue/64/da9f5b/online-store.png"
+          alt="online-store"
+        />
+        <p class="p">Orders</p>
+      </div>
+      <img
+        style="position: absolute; right: 4%"
+        width="38"
+        height="38"
+        src="https://img.icons8.com/material-rounded/48/da9f5b/chevron-right.png"
+        alt="chevron-right"
+    /></a>
+    <p class="hr2"></p>
+    <a
+      href="/rechargerecord"
+      class="list-content"
+      style="text-decoration: none"
+    >
+      <div class="list">
+        <img
+          width="34"
+          height="34"
+          src="https://img.icons8.com/glyph-neue/64/da9f5b/note.png"
+          alt="note"
+        />
+        <p class="p">Recharge Record</p>
+      </div>
+      <img
+        style="position: absolute; right: 4%"
+        width="38"
+        height="38"
+        src="https://img.icons8.com/material-rounded/48/da9f5b/chevron-right.png"
+        alt="chevron-right"
+    /></a>
+    <p class="hr2"></p>
+    <a href="/contact" class="list-content" style="text-decoration: none">
+      <div class="list">
+        <img
+          width="34"
+          height="34"
+          src="https://img.icons8.com/ios-filled/50/da9f5b/add-contact-to-company.png"
+          alt="add-contact-to-company"
+        />
+        <p class="p">Contact Us</p>
+      </div>
+      <img
+        style="position: absolute; right: 4%"
+        width="38"
+        height="38"
+        src="https://img.icons8.com/material-rounded/48/da9f5b/chevron-right.png"
+        alt="chevron-right"
+    /></a>
+    <p class="hr2"></p>
+
+    <a href="/logout" style="text-decoration: none">
+      <p class="logout">LOGOUT</p>
+    </a>
+  </body>
+</html>

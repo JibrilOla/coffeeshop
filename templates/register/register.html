@@ -1,0 +1,52 @@
+{%extends 'register/base.html'%} {%block content%}{%load static%}
+<style>
+  body {
+    height: fit-content;
+    background: rgb(244, 244, 244);
+  }
+  .helptext,
+  li {
+    color: rgb(255, 0, 0);
+    font-size: 13px;
+  }
+  label {
+    display: block;
+    font-size: 20px;
+    font-family: sans-serif;
+    padding-bottom: 1%;
+  }
+  input {
+    display: flex;
+    border: 2px solid rgb(200, 200, 200);
+    border-radius: 10px;
+    outline-color: #da9f5b;
+    outline-offset: 5px;
+    padding: 1%;
+    width: 100%;
+    background: white;
+  }
+
+  button {
+    width: 100%;
+  }
+  .all {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+  }
+</style>
+
+<div class="all">
+  <form action="" method="POST" style="width: 80%">
+    {% csrf_token %}
+    <div>{{form.as_p}}</div>
+    <button class="btn btn-primary" type="submit">Register</button>
+    <p>Already have an account? Login <a href="/login">here</a></p>
+    <br />
+  </form>
+</div>
+
+{%endblock%}

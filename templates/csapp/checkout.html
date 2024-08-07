@@ -1,0 +1,200 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <link href="{%static 'css/style.css' %}" rel="stylesheet" />
+  </head>
+  <style>
+    nav {
+      display: flex;
+      background: #3d1300;
+      align-items: center;
+      color: white;
+      height: 50px;
+    }
+    .summary {
+      height: 30px;
+      background: rgb(196, 196, 196);
+      color: rgb(0, 0, 0);
+      display: flex;
+      align-items: center;
+    }
+    body {
+      min-width: 100%;
+    }
+    * {
+      margin: 0;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+  </style>
+  <body>
+    <nav>
+      <a href="/cart">
+        <img
+          class="pr-2 ml-1"
+          width="30"
+          height="30"
+          src="https://img.icons8.com/ios/50/FFFFFF/left--v1.png"
+          alt="left--v1"
+        />
+      </a>
+      Place your Order
+    </nav>
+    {%if orders%}
+    <div class="summary pl-2">ORDER SUMMARY</div>
+    <div>
+      <div
+        class="pl-2 pr-2"
+        style="display: flex; justify-content: space-between"
+      >
+        <p>Item's total ({{item_total}})</p>
+        <p>N{{order_total}}.00</p>
+      </div>
+      <div
+        class="pl-2 pr-2"
+        style="display: flex; justify-content: space-between"
+      >
+        <p>Delivery fees</p>
+        <p>
+          N0.00
+          <span style="text-decoration: line-through">250.00</span>
+        </p>
+      </div>
+    </div>
+    <div
+      class="pl-2 pr-2"
+      style="display: flex; justify-content: space-between"
+    >
+      <p>Total</p>
+      <p>N{{order_total}}.00</p>
+    </div>
+    <hr />
+    <br />
+    <!-- form -->
+    <form class="row g-2 pl-2 pr-2" method="POST">
+      {%csrf_token%}
+      <div class="col-md-4">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          id="inputEmail4"
+          required
+        />
+      </div>
+      <div class="col-md-2">
+        <label for="inputNumber" class="form-label">Phone Number</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputNumber"
+          required
+          name="number"
+        />
+      </div>
+
+      <div class="col-md-5">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input
+          type="text"
+          name="address"
+          class="form-control"
+          id="inputAddress"
+          placeholder="1234 Main St"
+          required
+        />
+      </div>
+      <div class="col-md-5">
+        <label for="inputCity" class="form-label">City</label>
+        <input
+          type="text"
+          name="city"
+          class="form-control"
+          id="inputCity"
+          required
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" class="form-select" name="state" required>
+          <option selected></option>
+          <option>ABUJA FCT</option>
+          <option>ABIA</option>
+          <option>ADAMAWA</option>
+          <option>AKWA IBOM</option>
+          <option>ANAMBRA</option>
+          <option>BAUCHI</option>
+          <option>BAYELSA</option>
+          <option>BENUE</option>
+          <option>BORNO</option>
+          <option>CROSS RIVER</option>
+          <option>DELTA</option>
+          <option>EBONYI</option>
+          <option>EDO</option>
+          <option>EKITI</option>
+          <option>ENUGU</option>
+          <option>GOMBE</option>
+          <option>IMO</option>
+          <option>JIGAWA</option>
+          <option>KADUNA</option>
+          <option>KANO</option>
+          <option>KATSINA</option>
+          <option>KEBBI</option>
+          <option>KOGI</option>
+          <option>KWARA</option>
+          <option>LAGOS</option>
+          <option>NASSARAWA</option>
+          <option>NIGER</option>
+          <option>OGUN</option>
+          <option>ONDO</option>
+          <option>OSUN</option>
+          <option>OYO</option>
+          <option>PLATEAU</option>
+          <option>RIVERS</option>
+          <option>SOKOTO</option>
+          <option>TARABA</option>
+          <option>YOBE</option>
+          <option>ZAMFARA</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip Code</label>
+        <input
+          type="number"
+          class="form-control"
+          id="inputZip"
+          required
+          name="zipcode"
+        />
+      </div>
+      <div class="col-md-3">
+        <label for="inputMethod" class="form-label">Payment Method</label>
+        <select
+          id="inputMethod"
+          class="form-select"
+          name="payment_method"
+          required
+        >
+          <option selected></option>
+          <option>PAY WITH POINTS</option>
+          <option>PAY ON DELIVERY</option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary mt-5 mb-5 ml-5"
+        style="width: 80%"
+      >
+        PROCEED
+      </button>
+    </form>
+    {%endif%}
+  </body>
+</html>

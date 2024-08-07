@@ -1,0 +1,59 @@
+{%extends 'register/base.html'%} {%load static%} {%block content%}
+<!-- About Start -->
+<style>
+  .all {
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+  }
+  #user {
+    width: 80%;
+  }
+</style>
+<div class="text-center">
+  <form method="POST">
+    {% csrf_token %}
+
+    <div class="all">
+      <div class="form-floating mb-5" id="user">
+        <input
+          type="text"
+          class="form-control"
+          id="id_username"
+          name="username"
+          autofocus
+          autocapitalize="none"
+          maxlength="150"
+          required
+          placeholder="Username"
+          style="border-radius: 10px"
+        />
+        <label for="id_username">Username</label>
+      </div>
+      <div class="form-floating mb-5" id="user">
+        <input
+          type="password"
+          class="form-control"
+          id="id_password"
+          name="password"
+          autofocus
+          autocapitalize="none"
+          maxlength="150"
+          required
+          placeholder="Password"
+          style="border-radius: 10px"
+        />
+        <label for="id_username">Password</label>
+      </div>
+
+      <button class="btn btn-primary" style="width: 80%">Login</button>
+    </div>
+    Or Register <a href="/register">here</a>
+  </form>
+</div>
+<br /><br />
+
+{%endblock%}

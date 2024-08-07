@@ -1,0 +1,218 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>JO-{{title}}</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free Website Template" name="keywords" />
+    <meta content="Free Website Template" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+    <link
+      href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Customized Bootstrap Stylesheet -->
+
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <!-- <link href="{%static 'css/style.min.css' %}" rel="stylesheet" /> -->
+    <link href="{%static 'css/style.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% url 'colors' %}" />
+  </head>
+  <style>
+    .cart-icon,
+    .user-icon {
+      display: none;
+    }
+    @media (max-width: 450px) {
+      .cart-icon,
+      .user-icon {
+        display: block;
+        position: fixed;
+        top: 70%;
+        right: 2%;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        background-color: rgb(74, 10, 10);
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+      }
+      .user-icon {
+        top: 79%;
+      }
+    }
+  </style>
+
+  <body>
+    <a href="/cart">
+      <div class="cart-icon">
+        <img
+          width="34"
+          height="34"
+          src="https://img.icons8.com/sf-black/64/da9f5b/shopping-cart.png"
+          alt="shopping-cart"
+        />
+      </div>
+    </a>
+    <a href="/dashboard">
+      <div class="user-icon">
+        <img
+          width="38"
+          height="38"
+          src="https://img.icons8.com/pulsar-line/48/da9f5b/user.png"
+          alt="user"
+        />
+      </div>
+    </a>
+    <!-- Navbar Start -->
+    <div
+      class="container-fluid p-0 nav-bar"
+      style="position: fixed; background: rgb(61, 19, 0)"
+    >
+      <nav class="navbar navbar-expand-lg navbar-dark py-3">
+        <a href="/home" class="navbar-brand px-lg-4 m-0">
+          <h1 class="m-0 display-4 text-uppercase text-white">JO COFFEE</h1>
+        </a>
+        <button
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbarCollapse"
+        >
+          <div class="navbar-nav ml-auto p-4">
+            <a href="/home" class="nav-item nav-link">Home</a>
+            <a href="/about" class="nav-item nav-link">About</a>
+            <a href="/service" class="nav-item nav-link">Service</a>
+
+            <a href="/testimonial" class="nav-item nav-link">Testimonial</a>
+            <a href="/reservation" class="nav-item nav-link">Reservation</a>
+
+            <a href="/menu" class="nav-item nav-link">Place Order</a>
+            {%if request.user.is_authenticated %}
+
+            <a
+              href="/cart"
+              class="nav-item nav-link"
+              style="
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                font-weight: 600;
+                text-decoration: none;
+              "
+            >
+              <img
+                style="padding: 5%"
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios-filled/50/da9f5b/shopping-cart.png"
+                alt="shopping-cart"
+              />Cart
+            </a>
+
+            <a
+              href="/dashboard"
+              style="
+                display: flex;
+                align-items: center;
+                font-weight: 600;
+                font-size: 16px;
+                font-family: sans-serif;
+                position: relative;
+                left: 15px;
+                text-decoration: none;
+              "
+              ><img
+                style="padding: 5%; margin-left: 1px"
+                width="25"
+                height="25"
+                src="https://img.icons8.com/ios-filled/50/da9f5b/user-male-circle.png"
+                alt="user-male-circle"
+              />{{request.user}}</a
+            >
+            {%else%}
+            <a
+              href="/register"
+              class="btn btn-primary py-2 px-2 mx-1 d-none d-lg-block nav-item nav-link"
+              >Join Us</a
+            >
+            <a
+              href="/login"
+              class="btn btn-primary py-2 px-2 mx-1 d-none d-lg-block nav-item nav-link"
+              >Login</a
+            >{%endif%}
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Navbar End -->
+
+    <!-- Page Header Start -->
+    <div
+      class="container-fluid page-header mb-5 position-relative overlay-bottom"
+    >
+      <div
+        class="d-flex flex-column align-items-center justify-content-center pt-0 pt-lg-5"
+        style="min-height: 350px"
+      >
+        <h1 class="display-4 mb-3 mt-0 mt-lg-5 text-white text-uppercase">
+          {{title}}
+        </h1>
+        <div class="d-inline-flex mb-lg-5">
+          <p class="m-0 text-white">
+            <a class="text-white" href="/home">Home</a>
+          </p>
+          <p class="m-0 text-white px-2">/</p>
+          <p class="m-0 text-white">{{title}}</p>
+        </div>
+      </div>
+    </div>
+    {%block content%} {%endblock%}
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

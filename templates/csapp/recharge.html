@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% load bootstrap5 %} {% bootstrap_css %} {% bootstrap_javascript %}
+    <script>
+      // This function takes the button id as a parameter
+      function setText(buttonId) {
+        // Get the button element by its id
+        var button = document.getElementById(buttonId);
+        // Get the input element by its id
+        var input = document.getElementById("myInput");
+        // Get the text from the button's value attribute
+        var text = button.value;
+        // Set the text to the input's value attribute
+        input.value = text;
+      }
+    </script>
+  </head>
+  <style>
+    * {
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0%;
+      width: 100%;
+      height: fit-content;
+      background-color: rgb(244, 244, 244);
+    }
+    .w {
+      margin: 5%;
+      font-size: 16px;
+      color: rgb(0, 0, 0);
+    }
+    .user {
+      display: flex;
+      border: 4px solid #a05e11;
+      border-radius: 10px;
+      height: fit-content;
+      margin-bottom: 2%;
+      padding: 2%;
+      width: 80%;
+      background: white;
+    }
+    button {
+      border: 2px solid #da9f5b;
+      padding: 2%;
+      border-radius: 6px;
+      margin-bottom: 2%;
+      font-size: 20px;
+      margin: 1%;
+      width: 100px;
+      text-align: center;
+    }
+    @media (max-width: 450px) {
+      button {
+        font-size: 15px;
+        width: 70px;
+      }
+    }
+  </style>
+
+  {% if error_message %}
+  <a href="/initiate-payment">
+    <box-icon name="chevron-left" size="md"></box-icon>
+  </a>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+    crossorigin="anonymous"
+  />
+  <!-- JavaScript Bundle with Popper -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"
+  ></script>
+
+  <div>
+    <div>
+      <div style="display: flex; align-items: center; flex-direction: column">
+        <br /><br /><br />
+        <img
+          width="50"
+          height="50"
+          src="https://img.icons8.com/ios/50/ff0000/cancel.png"
+          alt="cancel"
+        />
+        <p
+          style="
+            font-size: 20px;
+            color: #f80909;
+            text-align: center;
+            width: 60%;
+          "
+        >
+          {{error_message}}
+        </p>
+        <a href="/initiate-payment" class="btn btn-danger"> Back</a>
+      </div>
+    </div>
+  </div>
+
+  {% else %}
+  <div style="display: flex; margin-top: 2%; justify-content: space-between">
+    <a href="/dashboard">
+      <img
+        width="30"
+        src="https://img.icons8.com/windows/32/da9f5b/back.png"
+        alt="back"
+        style="padding-left: 1%"
+      />
+    </a>
+
+    <h2 style="padding-right: 6%">Top-Up</h2>
+
+    <a href="/rechargerecord" style="padding-right: 3%"
+      ><img
+        width="25"
+        src="https://img.icons8.com/ios/50/da9f5b/overview-pages-3.png"
+        alt="overview-pages-3"
+    /></a>
+  </div>
+  <br /><br /><br />
+  <form action="/initiate-payment/" method="POST">
+    {% csrf_token %}
+
+    <div style="display: flex; flex-direction: column; align-items: center">
+      <h3>100 points = N100</h3>
+      <div class="user">
+        <img
+          width="40"
+          src="https://img.icons8.com/ios/50/da9f5b/money--v1.png"
+          alt="money--v1"
+        />
+
+        <input
+          type="number"
+          id="myInput"
+          placeholder="Enter Amount"
+          style="
+            height: 40px;
+            width: 100%;
+            outline: none;
+            border: none;
+            padding-left: 4%;
+            font-size: 25px;
+          "
+          name="amount"
+          required
+        />
+      </div>
+
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding-top: 5%;
+        "
+      >
+        <button
+          id="myButton1"
+          value="100"
+          onclick="setText('myButton1'); return false;"
+        >
+          100
+        </button>
+        <button
+          id="myButton2"
+          value="200"
+          onclick="setText('myButton2'); return false;"
+        >
+          200
+        </button>
+        <button
+          id="myButton3"
+          value="500"
+          onclick="setText('myButton3'); return false;"
+        >
+          500
+        </button>
+        <button
+          id="myButton4"
+          value="1000"
+          onclick="setText('myButton4'); return false;"
+        >
+          1000
+        </button>
+        <button
+          id="myButton5"
+          value="2000"
+          onclick="setText('myButton5'); return false;"
+        >
+          2000
+        </button>
+      </div>
+      <div style="width: 100%; display: flex; justify-content: center">
+        <button
+          id="myButton6"
+          value="5000"
+          onclick="setText('myButton6'); return false;"
+        >
+          5000
+        </button>
+        <button
+          id="myButton7"
+          value="10000"
+          onclick="setText('myButton7'); return false;"
+        >
+          10000
+        </button>
+        <button
+          id="myButton8"
+          value="15000"
+          onclick="setText('myButton8'); return false;"
+        >
+          15000
+        </button>
+        <button
+          id="myButton9"
+          value="20000"
+          onclick="setText('myButton9'); return false;"
+        >
+          20000
+        </button>
+        <button
+          id="myButton10"
+          value="30000"
+          onclick="setText('myButton10'); return false;"
+        >
+          30000
+        </button>
+      </div>
+    </div>
+    <!-- Email input -->
+
+    <label for="email" style="margin-left: 5%" class="mt-5"
+      >Email <span style="color: red">*</span></label
+    >
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+      "
+    >
+      <input
+        type="email"
+        placeholder="Enter email address"
+        style="
+          width: 80%;
+          height: 40px;
+          border: 4px solid rgb(255, 255, 255);
+          border-radius: 10px;
+          padding-left: 10px;
+          font-size: 18px;
+        "
+        name="email"
+        required
+        id="email"
+      />
+    </div>
+
+    <div class="w">
+      <h3 style="margin-top: 10%">NB:</h3>
+      <p>-Payment would not proceed if email is invalid</p>
+      <p>
+        -Minimum recharge is 100 Points, any amount below the minimum recharge
+        would not be recieved
+      </p>
+      <p>-Recharge arrival depends on bank network</p>
+      <p>
+        -If your recharge has not arrived after 24hours,contact customer service
+      </p>
+      <br />
+    </div>
+
+    <div style="display: flex; justify-content: center">
+      <button
+        type="submit"
+        class="btn btn-primary btn-block mb-4"
+        style="
+          background-color: #da9f5b;
+          border: none;
+          border-radius: 10px;
+          width: 50%;
+          font-family: sans-serif;
+          font-size: 20px;
+          color: white;
+        "
+      >
+        Proceed
+      </button>
+    </div>
+  </form>
+  {%endif%}
+</html>
